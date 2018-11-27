@@ -3,16 +3,16 @@ services:
   - docker
 
 before_install:
-  - docker build -t multi-container-docker -f ./client/Dockerfile.dev ./client
+  - docker build -t ferprez/multi-container-docker -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run multi-container-docker npm test -- --coverage
 
 after_success:
-  - docker build -t multi-container-docker-client ./client
-  - docker build -t multi-container-docker-nginx ./nginx
-  - docker build -t multi-container-docker-server ./server
-  - docker build -t multi-container-docker-worker ./worker
+  - docker build -t ferprez/multi-container-docker-client ./client
+  - docker build -t ferprez/multi-container-docker-nginx ./nginx
+  - docker build -t ferprez/multi-container-docker-server ./server
+  - docker build -t ferprez/multi-container-docker-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push ferprez/multi-container-docker-client
