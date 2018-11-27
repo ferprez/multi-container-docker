@@ -15,7 +15,7 @@ after_success:
   - docker build -t multi-container-docker-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push multi-container-docker-client
-  - docker push multi-container-docker-nginx
-  - docker push multi-container-docker-server
-  - docker push multi-container-docker-worker
+  - docker push ferprez/multi-container-docker-client
+  - docker push ferprez/multi-container-docker-nginx
+  - docker push ferprez/multi-container-docker-server
+  - docker push ferprez/multi-container-docker-worker
